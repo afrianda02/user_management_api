@@ -1,0 +1,10 @@
+/.bundle
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/db/*.sqlite3
+/public/assets
+/.env
+/node_modules
+/coverage
