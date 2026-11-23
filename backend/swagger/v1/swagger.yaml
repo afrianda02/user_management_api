@@ -4,9 +4,14 @@ info:
   version: '1.0'
 servers:
   - url: http://localhost:3000
+tags:
+  - name: Auth
+  - name: Users
+  - name: JobCategories
 paths:
   /api/v1/auth/register:
     post:
+      tags: [Auth]
       summary: Register
       requestBody:
         required: true
@@ -27,6 +32,7 @@ paths:
         '422': { description: unprocessable }
   /api/v1/auth/login:
     post:
+      tags: [Auth]
       summary: Login
       requestBody:
         required: true
@@ -42,6 +48,7 @@ paths:
         '401': { description: unauthorized }
   /api/v1/auth/refresh:
     post:
+      tags: [Auth]
       summary: Refresh token
       requestBody:
         required: true
@@ -56,6 +63,7 @@ paths:
         '401': { description: unauthorized }
   /api/v1/auth/logout:
     delete:
+      tags: [Auth]
       summary: Logout
       security:
         - bearerAuth: []
@@ -63,6 +71,7 @@ paths:
         '200': { description: ok }
   /api/v1/auth/me:
     get:
+      tags: [Auth]
       summary: Current user
       security:
         - bearerAuth: []
@@ -71,6 +80,7 @@ paths:
         '401': { description: unauthorized }
   /api/v1/users:
     get:
+      tags: [Users]
       summary: List users
       security:
         - bearerAuth: []
@@ -79,6 +89,7 @@ paths:
         '401': { description: unauthorized }
   /api/v1/users/{id}:
     get:
+      tags: [Users]
       summary: Show user
       parameters:
         - in: path
@@ -91,6 +102,7 @@ paths:
         '200': { description: ok }
         '404': { description: not found }
     patch:
+      tags: [Users]
       summary: Update user
       parameters:
         - in: path
@@ -116,6 +128,7 @@ paths:
         '200': { description: ok }
         '422': { description: unprocessable }
     delete:
+      tags: [Users]
       summary: Delete user
       parameters:
         - in: path
@@ -129,10 +142,12 @@ paths:
         '404': { description: not found }
   /api/v1/job_categories:
     get:
+      tags: [JobCategories]
       summary: List job categories
       responses:
         '200': { description: ok }
     post:
+      tags: [JobCategories]
       summary: Create job category
       requestBody:
         required: true
@@ -149,6 +164,7 @@ paths:
         '201': { description: created }
   /api/v1/job_categories/{id}:
     get:
+      tags: [JobCategories]
       summary: Show job category
       parameters:
         - in: path
@@ -158,6 +174,7 @@ paths:
       responses:
         '200': { description: ok }
     patch:
+      tags: [JobCategories]
       summary: Update job category
       parameters:
         - in: path
@@ -178,6 +195,7 @@ paths:
       responses:
         '200': { description: ok }
     delete:
+      tags: [JobCategories]
       summary: Delete job category
       parameters:
         - in: path
