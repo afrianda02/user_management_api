@@ -9,5 +9,5 @@ RSpec.configure do |config|
       servers: [ { url: "http://localhost:3000" } ]
     }
   }
-  config.swagger_dry_run = false
+  config.swagger_dry_run = true
 end
