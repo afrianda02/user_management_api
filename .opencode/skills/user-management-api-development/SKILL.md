@@ -62,10 +62,12 @@ This skill provides domain-specific guidelines, architecture rules, and testing 
 - Factories in `spec/factories/`
 - Auth helper in `spec/support/auth_helper.rb`
 
-## Guidelines
+## Hardening Roadmap (TODO)
 
-- Keep controllers thin; move business logic to services.
-- Add request specs for new endpoints.
-- Update Swagger specs when changing API contracts.
-- Use soft delete instead of hard delete for users.
-- Validate inputs at model level.
+- [Auth] Restrict create/update/destroy to admin role
+- [Pagination] Add page/per_page + meta
+- [Search] Filter JobCategory by name
+- [Response] Standardize JSON envelope (data + meta)
+- [Errors] Unified error rendering
+- [Tests] Request specs for roles/pagination
+- [Swagger] Document params & responses

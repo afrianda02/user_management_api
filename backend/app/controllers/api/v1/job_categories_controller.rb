@@ -1,7 +1,10 @@
 module Api
   module V1
     class JobCategoriesController < ApplicationController
-      # TODO: add pagination & search
+      # TODO[Auth]: restrict create/update/destroy to admin
+      # TODO[Pagination]: add page/per_page support
+      # TODO[Search]: filter by name query param
+      # TODO[Response]: standardize JSON (data + meta)
       skip_before_action :authenticate_user!, only: [:index, :show]
 
       def index
