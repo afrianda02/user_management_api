@@ -28,6 +28,7 @@ export async function getUsers() {
 }
 
 export async function getJobCategories() {
+  // TODO: add create/update/delete helpers
   const { data } = await api.get('/api/v1/job_categories')
   return data
 }

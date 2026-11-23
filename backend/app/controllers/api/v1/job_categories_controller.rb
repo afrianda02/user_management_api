@@ -1,6 +1,7 @@
 module Api
   module V1
     class JobCategoriesController < ApplicationController
+      # TODO: add pagination & search
       skip_before_action :authenticate_user!, only: [:index, :show]
 
       def index

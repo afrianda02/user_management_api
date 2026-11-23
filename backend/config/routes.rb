@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
       resources :users, only: [:index, :show, :update, :destroy]
       resources :job_categories
+      # TODO: add nested routes if needed
     end
   end
 
