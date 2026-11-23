@@ -127,6 +127,65 @@ paths:
       responses:
         '200': { description: ok }
         '404': { description: not found }
+  /api/v1/job_categories:
+    get:
+      summary: List job categories
+      responses:
+        '200': { description: ok }
+    post:
+      summary: Create job category
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                job_category:
+                  type: object
+                  properties:
+                    name: { type: string }
+      responses:
+        '201': { description: created }
+  /api/v1/job_categories/{id}:
+    get:
+      summary: Show job category
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: ok }
+    patch:
+      summary: Update job category
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                job_category:
+                  type: object
+                  properties:
+                    name: { type: string }
+      responses:
+        '200': { description: ok }
+    delete:
+      summary: Delete job category
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '204': { description: no content }
 components:
   securitySchemes:
     bearerAuth:

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       get "auth/me", to: "auth#me"
 
       resources :users, only: [:index, :show, :update, :destroy]
+      resources :job_categories
     end
   end
 

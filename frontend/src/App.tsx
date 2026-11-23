@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { login, register, me, getUsers, setToken } from './api'
+import { login, register, me, getUsers, getJobCategories, setToken } from './api'
 
 export default function App() {
   const [email, setEmail] = useState('')
@@ -7,6 +7,7 @@ export default function App() {
   const [name, setName] = useState('')
   const [msg, setMsg] = useState('')
   const [users, setUsers] = useState<any[]>([])
+  const [jobCategories, setJobCategories] = useState<any[]>([])
   const [loading, setLoading] = useState(false)
 
   async function doRegister() {
@@ -42,6 +43,16 @@ export default function App() {
     } finally { setLoading(false) }
   }
 
+  async function loadJobCategories() {
+    setLoading(true); setMsg('')
+    try {
+      const d = await getJobCategories()
+      setJobCategories(d)
+    } catch (e: any) {
+      setMsg(e?.response?.data?.error || e.message)
+    } finally { setLoading(false) }
+  }
+
   const inputStyle = { width: '100%', padding: 8, marginBottom: 8, boxSizing: 'border-box' as const }
 
   return (
@@ -54,10 +65,12 @@ export default function App() {
         <button onClick={doRegister} disabled={loading}>Register</button>
         <button onClick={doLogin} disabled={loading}>Login</button>
         <button onClick={loadUsers} disabled={loading}>Load Users</button>
+        <button onClick={loadJobCategories} disabled={loading}>Load Job Categories</button>
       </div>
       {loading && <p>Loading...</p>}
       {msg && <p style={{ color: msg.startsWith('Logged') || msg.startsWith('Registered') ? 'green' : 'red' }}>{msg}</p>}
       <ul>{users.map((u: any) => <li key={u.id}>{u.email} ({u.role})</li>)}</ul>
+      <ul>{jobCategories.map((j: any) => <li key={j.id}>{j.name}</li>)}</ul>
     </div>
   )
 }

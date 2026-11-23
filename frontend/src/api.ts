@@ -26,3 +26,8 @@ export async function getUsers() {
   const { data } = await api.get('/api/v1/users')
   return data
 }
+
+export async function getJobCategories() {
+  const { data } = await api.get('/api/v1/job_categories')
+  return data
+}
