@@ -8,3 +8,8 @@
 /.env
 /node_modules
 /coverage
+/frontend/node_modules
+/frontend/dist
+/backend/log/*
+/backend/tmp/*
+/backend/.env
